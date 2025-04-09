@@ -92,3 +92,26 @@ function flipBack() {
     flashcard.classList.remove("flipped");
 }
 
+const moodQuotes = {
+    happy: "😊 Happiness is not by chance, but by choice.",
+    sad: "😢 It's okay to not be okay. You’re stronger than you know.",
+    curious: "🤔 Curiosity is the wick in the candle of learning.",
+    bored: "😴 Bored? Time to light up your brain with flashcards!"
+  };
+  
+  function loadMood() {
+    const mood = document.getElementById("moodSelector").value;
+    document.getElementById("moodQuote").innerText = moodQuotes[mood] || "✨ Pick a mood to see a quote ✨";
+    // Load cards as per your existing logic...
+  }
+  
+  function toggleMusic() {
+    const audio = document.getElementById("ambientAudio");
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+  
+
