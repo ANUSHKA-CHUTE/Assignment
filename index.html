@@ -2,45 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mood Based Flashcards</title>
-  
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
+  <style>
+    
     body {
       font-family:'Times New Roman', Times, serif;
       text-align: center;
       background: #e8eaef;
       margin: 0;
       padding: 20px;
-      font-size: 30px;
+      font-size: 20px;
+      transition: background 0.6s ease, color 0.4s ease;
+      
     }
 
-    h2 {
+    h1 {
       color: #333;
+      font-weight: bold;
     }
 
     select {
       padding: 10px;
       margin: 10px;
       font-size: 20px;
-      font-family: 'Times New Roman', Times, serif;
-      
+      font-family:'Times New Roman', Times, serif;
     }
 
-    
-    select:hover{
-
-box-shadow: 0 0 15px rgba(88, 93, 94, 0.572);
-cursor: pointer;
-border: 1.5px solid black;
-
-}
+    select:hover {
+      box-shadow: 0 0 15px rgba(88, 93, 94, 0.572);
+      cursor: pointer;
+      border: 1.5px  rgb(36, 34, 34);
+    }
 
     .flashcard {
       width: 300px;
       height: 200px;
       margin: 30px auto;
       perspective: 1000px;
+      /* border: rgb(13, 1, 11); */
     }
 
     .card-inner {
@@ -50,20 +52,21 @@ border: 1.5px solid black;
       transform-style: preserve-3d;
       cursor: pointer;
       position: relative;
-      /* font-size: 40px; */
+      border: #2c3e50;
     }
 
-    
+
     .card-inner:hover{
       border: 2px solid #e885f1;
       border-radius: 10px;
+      box-shadow: 0 0 20px rgba(28, 190, 226, 0.572);
+      cursor: pointer;
 
-box-shadow: 0 0 20px rgba(10, 189, 230, 0.572);
-cursor: pointer;
+    }
 
-}
-    .flashcard.flipped .card-inner {
 
+    .flashcard.flipped .card-inner
+     {
       transform: rotateY(180deg);
     }
 
@@ -73,7 +76,6 @@ cursor: pointer;
       position: absolute;
       backface-visibility: hidden;
       background: #fff;
-      /* border: 0.5px solid #e885f1 ; */
       border-radius: 10px;
       padding: 20px;
       box-sizing: border-box;
@@ -90,83 +92,73 @@ cursor: pointer;
     button {
       padding: 10px 20px;
       margin: 5px;
-      font-family: 'Times New Roman', Times, serif;
+      font-family:'Times New Roman', Times, serif;
       font-size: 20px;
-      background: linear-gradient( to right, #c8d7db, #66c0c4);
+      background: linear-gradient(to right, #dfebef, #70e4eb);
       color: black;
-      border: solid rgb(139, 142, 154) ;
+      border: solid rgb(139, 142, 154);
       border-radius: 6px;
       cursor: pointer;
     }
 
-    button:hover{
-
-        box-shadow: 0 0 15px rgba(10, 189, 230, 0.572);
-        cursor: pointer;
-
+    button:hover {
+      box-shadow: 0 0 15px rgba(10, 189, 230, 0.572);
+      cursor: pointer;
     }
 
+    
+    .happy { background: linear-gradient(to right, #a8dcb0, #83e067); color: #333; }
+    .sad { background: linear-gradient(to right, #cfd9df, #e2ebf0); color: #2c3e50; }
+    .curious { background: linear-gradient(to right, #fbc2eb, #a6c1ee); color: #2c3e50; }
+    .bored { background: linear-gradient(to right, #e0eafc, #cfdef3); color: #2c3e50; }
+
+  
     .mood-footer {
-  background: linear-gradient(to right, #c9d6ff, #e2e2e2);
-  padding: 25px;
-  text-align: center;
-  margin-top: 50px;
-  border-top: 4px solid #555;
-  font-family: 'Georgia', serif;
-  color: #333;
-  border-radius: 30px 30px 0 0;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
-}
+      padding: 25px;
+      text-align: center;
+      margin-top: 50px;
+      border-top: 4px solid #555;
+      font-family:'Times New Roman', Times, serif;
+      border-radius: 30px 30px 0 0;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+      transition: background 0.6s ease, color 0.4s ease;
+      /* background: linear-gradient(to right , rgb(240, 239, 239) , rgb(184, 182, 182) ); */
+      background: linear-gradient(to right, #c9d6ff, #e2e2e2);
 
-.mood-footer p, .mood-footer button {
-  margin: 10px 0;
-  font-size: 18px;
-}
+      
+    }
 
-.mood-footer a {
-  color: #222;
-  text-decoration: none;
-  font-weight: bold;
-}
+    .footer-emojis {
+      font-size: 22px;
+      margin-top: 10px;
+      animation: float 2s ease-in-out infinite;
+    }
 
-.mood-footer a:hover {
-  text-decoration: underline;
-  color: #4a47a3;
-}
-
-.footer-emojis {
-  font-size: 22px;
-  margin-top: 10px;
-  animation: float 2s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
 
   </style>
+
 </head>
 
 <body>
 
-  <h2>Pick Your Mood</h2>
+  <h1>Pick Your Mood</h1>
 
   <select id="moodSelector" onchange="loadMood()">
-
-    <option value="happy"> Happy</option>
+    <option disabled selected value="">-- Select a Mood --</option>
+    <option value="happy">Happy</option>
     <option value="sad">Sad</option>
     <option value="curious">Curious</option>
     <option value="bored">Bored</option>
 
   </select>
 
+  <div class="flashcard" id="flashcard"  onclick="flipCard()">
 
-
-  <div class="flashcard" id="flashcard">
-
-    <div class="card-inner" id="card-inner">
-
+    <div class="card-inner" id="card-inner" >
       <div class="card-front" id="question">Question will appear here</div>
       <div class="card-back" id="answer">Answer will appear here</div>
 
@@ -180,15 +172,13 @@ cursor: pointer;
 
   <footer class="mood-footer">
     <p id="moodQuote">✨ Select a mood to see a quote ✨</p>
-    <button onclick="toggleMusic()">🎵 Toggle Ambient Sound</button>
-    <p class="footer-note">Crafted with ❤️ & moods by <a href="https://github.com/yourusername" target="_blank">ANUSHKA!</a></p>
+    <p class="footer-note">Crafted with ❤️ & moods by <a href="" target="_blank">ANUSHKA!</a></p>
     <div class="footer-emojis">😊 😢 🤔 😴 🚀</div>
-    <audio id="ambientAudio" loop>
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/22/audio_d47ef6f190.mp3" type="audio/mpeg">
-    </audio>
-  </footer>
-  
 
-<script src="fc2.js"></script>
+  </footer>
+
+
+  <script src="fc2.js"></script>
+
 </body>
 </html>
