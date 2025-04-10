@@ -3,11 +3,13 @@ let currentMood = '';
 let currentIndex = 0;
 
 const moodStyles = {
+  
   happy: {
-    background: "linear-gradient(to right,rgb(236, 243, 244),rgb(223, 254, 223))",
-    color: "#333",
-    footer: "linear-gradient(to right, rgb(231, 239, 240),rgb(221, 228, 225))"
+    background: "linear-gradient(to right,rgb(244, 205, 223),rgb(225, 199, 246))",
+    color: "#2c3e50",
+    footer: "linear-gradient(to right,rgb(238, 237, 238),rgb(241, 207, 248))"
   },
+
   sad: {
     background: "linear-gradient(to right, #cfd9df, #e2ebf0)",
     color: "#2c3e50",
@@ -18,11 +20,12 @@ const moodStyles = {
     color: "#2c3e50",
     footer: "linear-gradient(to right, #e8d9f5, #deeafd)"
   },
+
   bored: {
-    background: "linear-gradient(to right,rgb(244, 205, 223),rgb(225, 199, 246))",
-    color: "#2c3e50",
-    footer: "linear-gradient(to right,rgb(238, 237, 238),rgb(241, 207, 248))"
-  }
+    background: "linear-gradient(to right,rgb(236, 243, 244),rgb(198, 245, 198))",
+    color: "#333",
+    footer: "linear-gradient(to right, rgb(231, 239, 240),rgb(198, 220, 240))"
+  },
 };
 
 const moodFlashcards = {
