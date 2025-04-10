@@ -21,7 +21,7 @@ const moodStyles = {
   bored: {
     background: "linear-gradient(to right,rgb(244, 205, 223),rgb(225, 199, 246))",
     color: "#2c3e50",
-    footer: "linear-gradient(to right,rgb(238, 237, 238),rgb(240, 198, 224))"
+    footer: "linear-gradient(to right,rgb(238, 237, 238),rgb(241, 207, 248))"
   }
 };
 
